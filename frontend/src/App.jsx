@@ -13,7 +13,7 @@ function App() {
   const [properties, setProperties] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/properties")
+    axios.get("http://realestate_backend:5000/api/properties")
       .then((res) => {
         setProperties(res.data);
       })
