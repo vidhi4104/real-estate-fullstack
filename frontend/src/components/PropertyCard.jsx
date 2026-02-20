@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PropertyCard = ({ property }) => {
-  const imageUrl = `http://localhost:5000${property.image_url}`;
+  const imageUrl = `http://13.232.29.33:5000${property.image_url}`;
 
 
   return (
