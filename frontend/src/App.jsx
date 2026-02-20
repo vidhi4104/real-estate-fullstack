@@ -1,7 +1,8 @@
+import axios from "axios";
 
 import React from 'react';
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PropertyCard from './components/PropertyCard';
@@ -12,12 +13,17 @@ function App() {
   const [properties, setProperties] = useState([]);
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:5000/api/properties")
+    axios.get("http://localhost:5000/api/properties")
       .then((res) => {
         setProperties(res.data);
       })
       .catch((err) => console.log(err));
+
   }, []);
+
+
+
+
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);

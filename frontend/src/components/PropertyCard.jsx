@@ -1,11 +1,8 @@
 import React from 'react';
 
 const PropertyCard = ({ property }) => {
+  const imageUrl = `http://localhost:5000${property.image_url}`;
 
-  const imageUrl =
-    property.image_url.startsWith("http")
-      ? property.image_url
-      : `http://127.0.0.1:5000${property.image_url}`;
 
   return (
     <div className="property-card">
