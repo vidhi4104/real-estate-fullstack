@@ -1,6 +1,32 @@
-venv/
+# Python
 __pycache__/
 *.pyc
-node_modules/
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Environment
 .env
+
+# Node
+node_modules/
+dist/
+build/
+
+# Terraform (VERY IMPORTANT)
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# AWS KEYS (CRITICAL)
+*.pem
+
+# OS
 .DS_Store
+Thumbs.db
