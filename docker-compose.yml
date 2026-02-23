@@ -2,10 +2,8 @@ version: "3.9"
 
 services:
 
-  # ---------------- MYSQL DATABASE ----------------
   db:
-    image: mysql:8.0
-    container_name: realestate_mysql
+    image: mysql:8
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: Vidhi@4104
@@ -13,34 +11,23 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - db_data:/var/lib/mysql
       - ./backend/initdb:/docker-entrypoint-initdb.d
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-pVidhi@4104" ]
       interval: 10s
-      timeout: 5s
       retries: 10
 
-  # ---------------- FLASK BACKEND ----------------
   backend:
     build: ./backend
-    container_name: realestate_backend
-    restart: always
     ports:
       - "5000:5000"
     depends_on:
       db:
         condition: service_healthy
 
-  # ---------------- REACT FRONTEND ----------------
   frontend:
     build: ./frontend
-    container_name: realestate_frontend
-    restart: always
     ports:
       - "3000:80"
     depends_on:
       - backend
-
-volumes:
-  db_data:
