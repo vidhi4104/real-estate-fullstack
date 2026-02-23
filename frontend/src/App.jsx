@@ -13,9 +13,16 @@ function App() {
   const [properties, setProperties] = useState([]);
 
   useEffect(() => {
-    // All scenarios use localhost since the browser makes the request
-    const apiUrl = "http://localhost:5000/api/properties";
+    // Determine API URL based on environment
+    let apiUrl;
 
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      // Local development
+      apiUrl = "http://localhost:5000/api/properties";
+    } else {
+      // Production - use the actual domain/IP of your live server
+      apiUrl = "http://13.232.29.33:5000/api/properties";
+    }
     axios.get(apiUrl)
       .then((res) => {
         setProperties(res.data);
