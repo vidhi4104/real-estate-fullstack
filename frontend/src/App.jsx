@@ -1,3 +1,4 @@
+
 import axios from "axios";
 
 import React from 'react';
@@ -11,26 +12,14 @@ import PropertyCard from './components/PropertyCard';
 function App() {
 
   const [properties, setProperties] = useState([]);
+  const API = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    // Determine API URL based on environment
-    let apiUrl;
-
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-      // Local development
-      apiUrl = "http://localhost:5000/api/properties";
-    } else {
-      // Production - use the actual domain/IP of your live server
-      apiUrl = "http://13.232.29.33:5000/api/properties";
-    }
-    axios.get(apiUrl)
-      .then((res) => {
-        setProperties(res.data);
-      })
-      .catch((err) => console.error("Error fetching properties:", err));
-
+    fetch(`${API}/api/properties`)
+      .then(res => res.json())
+      .then(data => setProperties(data))
+      .catch(err => console.log(err));
   }, []);
-
 
 
 

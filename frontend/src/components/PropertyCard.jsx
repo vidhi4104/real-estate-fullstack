@@ -1,19 +1,10 @@
 import React from 'react';
 
 const PropertyCard = ({ property }) => {
-  // Determine base URL based on environment
-  let baseUrl;
-  
-  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    // Local development
-    baseUrl = "http://localhost:5000";
-  } else {
-    // Production
-    baseUrl = "http://13.232.29.33:5000";
-  }
-  
-  const imageUrl = `${baseUrl}${property.image_url}`;
 
+  const baseUrl = import.meta.env.VITE_API_URL;
+
+  const imageUrl = `${baseUrl}${property.image_url}`;
 
   return (
     <div className="property-card">
