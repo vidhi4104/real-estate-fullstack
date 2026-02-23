@@ -19,7 +19,7 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 # -------------------- DATABASE CONFIG --------------------
 # IMPORTANT: hostname = db (docker-compose mysql service name)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Vidhi@4104@db:3306/realestate_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@mysql:3306/realestate_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # initialize database
