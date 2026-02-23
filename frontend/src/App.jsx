@@ -13,11 +13,14 @@ function App() {
   const [properties, setProperties] = useState([]);
 
   useEffect(() => {
-    axios.get("http://13.232.29.33:5000/api/properties")
+    // All scenarios use localhost since the browser makes the request
+    const apiUrl = "http://localhost:5000/api/properties";
+
+    axios.get(apiUrl)
       .then((res) => {
         setProperties(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error("Error fetching properties:", err));
 
   }, []);
 
